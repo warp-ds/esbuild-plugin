@@ -15,24 +15,24 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@unocss/core": "0.58.5",
-    "@warp-ds/css": "1.9.2",
-    "@warp-ds/uno": "1.10.2",
-    "browserslist": "4.23.0",
-    "lightningcss": "1.24.0",
+    "@unocss/core": "0.63.4",
+    "@warp-ds/css": "2.0.0",
+    "@warp-ds/uno": "2.0.0",
+    "browserslist": "4.24.0",
+    "lightningcss": "1.27.0",
     "nanoid": "5.0.7"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "@types/node": "20.11.27",
-    "@warp-ds/elements-core": "0.0.1-alpha.12",
-    "esbuild": "0.20.1",
-    "glob": "10.4.2",
-    "lit": "2.7.6",
+    "@warp-ds/elements-core": "2.0.1",
+    "esbuild": "0.23.0",
+    "glob": "11.0.0",
+    "lit": "3.2.0",
     "semantic-release": "24.0.0",
     "snapshot-assertion": "5.0.0",
-    "tap": "18.7.1",
-    "typescript": "5.4.2"
+    "tap": "21.0.0",
+    "typescript": "5.5.4"
   }
 }
