@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - alpha
+      - beta
+      - next
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        node-version: [20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+
+      - run: npm run types
+
+      - name: npm test
+        run: npm test

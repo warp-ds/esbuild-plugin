@@ -1,0 +1,18 @@
+// test/fixtures/simple/simple.js
+var simple = () => {
+  return `
+			<html>
+					<head>
+							<style>
+									*,:before,:after{--w-rotate:0;--w-rotate-x:0;--w-rotate-y:0;--w-rotate-z:0;--w-scale-x:1;--w-scale-y:1;--w-scale-z:1;--w-skew-x:0;--w-skew-y:0;--w-translate-x:0;--w-translate-y:0;--w-translate-z:0}.s-text-default{color:var(--w-s-color-text-default)}.text-22{font-size:var(--w-font-size-l);line-height:var(--w-line-height-l)}
+							</style>
+					</head>
+					<body>
+							<div class="text-22 s-text-default">Hello world</div>
+					</body>
+			</html>
+	`;
+};
+export {
+  simple
+};

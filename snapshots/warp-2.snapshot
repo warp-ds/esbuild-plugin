@@ -1,0 +1,61 @@
+// test/fixtures/complex/component.js
+import { LitElement as LitElement2, css as css2, html as html4 } from "lit";
+
+// test/fixtures/complex/templates.js
+import { html } from "lit";
+var header = () => {
+  return html`
+        <header class="text-xxl">Hello header</header>
+    `;
+};
+
+// test/fixtures/complex/date/picker.js
+import { LitElement, css, html as html3 } from "lit";
+
+// test/fixtures/complex/date/builder.js
+import { html as html2 } from "lit";
+var date = () => {
+  return html2`
+        <date class="font-normal">4th of August 2023</date>
+    `;
+};
+
+// test/fixtures/complex/date/picker.js
+var DatePicker = class extends LitElement {
+  static styles = [
+    css`
+      *,:before,:after{--w-rotate:0;--w-rotate-x:0;--w-rotate-y:0;--w-rotate-z:0;--w-scale-x:1;--w-scale-y:1;--w-scale-z:1;--w-skew-x:0;--w-skew-y:0;--w-translate-x:0;--w-translate-y:0;--w-translate-z:0}.static{position:static};
+    `
+  ];
+  render() {
+    return html3`
+      <div>
+        <header class="font-bold">This is a date</header>
+        ${date()}
+      </div>
+    `;
+  }
+};
+if (!customElements.get("date-picker")) {
+  customElements.define("date-picker", DatePicker);
+}
+
+// test/fixtures/complex/component.js
+var Component = class extends LitElement2 {
+  static styles = [
+    css2`
+      *,:before,:after{--w-rotate:0;--w-rotate-x:0;--w-rotate-y:0;--w-rotate-z:0;--w-scale-x:1;--w-scale-y:1;--w-scale-z:1;--w-skew-x:0;--w-skew-y:0;--w-translate-x:0;--w-translate-y:0;--w-translate-z:0}.static{position:static}.text-xxl{font-size:var(--w-font-size-xxl);line-height:var(--w-line-height-xxl)};
+    `
+  ];
+  render() {
+    return html4`
+            <section class"text-m">
+                ${header()}
+                <date-picker></date-picker>	    
+            </section>
+        `;
+  }
+};
+export {
+  Component as default
+};
