@@ -32,7 +32,7 @@ test("plugin() - Simple module structure", async () => {
 
   await assertSnapshot(
     bufferToString(result.outputFiles),
-    "snapshots/warp-1.snapshot"
+    "snapshots/warp-1.snapshot",
   );
 });
 
@@ -50,7 +50,7 @@ test("plugin() - Complex module structure", async () => {
 
   await assertSnapshot(
     bufferToString(result.outputFiles),
-    "snapshots/warp-2.snapshot"
+    "snapshots/warp-2.snapshot",
   );
 });
 
@@ -71,7 +71,7 @@ test("plugin() - multiple entrypoints (server-side rendering)", async () => {
 
   await assertSnapshot(
     bufferToString(clientResult.outputFiles),
-    "snapshots/warp-3.snapshot"
+    "snapshots/warp-3.snapshot",
   );
 
   const files = glob.sync(ssrServerGlob);
@@ -89,6 +89,6 @@ test("plugin() - multiple entrypoints (server-side rendering)", async () => {
 
   await assertSnapshot(
     bufferToString(serverResult.outputFiles),
-    "snapshots/warp-4.snapshot"
+    "snapshots/warp-4.snapshot",
   );
 });
