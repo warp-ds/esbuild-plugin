@@ -59,14 +59,13 @@ const buildCSS = async (
  * @param {RegExp} [options.filter]
  * @param {string} [options.placeholder]
  * @param {boolean} [options.minify]
- * @returns object
+ * @returns {import('esbuild').Plugin}
  */
 export default ({
   filter = /.*?/,
   placeholder = "@warp-css",
   minify = true,
 } = {}) => {
-  /** @type {import('esbuild').Plugin}*/
   return {
     name: "warp-esbuild-plugin",
     /**
@@ -77,7 +76,6 @@ export default ({
 
       /** @type {Tree[]} */
       let trees = [];
-
       // On resolve build up a import tree hierarchy of which files
       // import which files in the module structure
       build.onResolve({ filter }, (args) => {
@@ -88,7 +86,7 @@ export default ({
           const tree = new Tree();
           tree.set(file);
           trees.push(tree);
-          return {};
+          return null;
         }
 
         // The same module can be part of multiple entrypoint's trees
@@ -98,7 +96,7 @@ export default ({
           }
         }
 
-        return {};
+        return null;
       });
 
       // On load detect all files which has a @warp-css tag and
@@ -126,11 +124,16 @@ export default ({
           }
         }
 
+        let maybeLoader = ext.replace(".", "");
+        if (maybeLoader === "mjs" || maybeLoader === "cjs") {
+          maybeLoader = "js";
+        }
+        if (maybeLoader === "mts" || maybeLoader === "cts") {
+          maybeLoader = "ts";
+        }
         return {
           contents,
-          loader: /** @type {import('esbuild').Loader} */ (
-            ext.replace(".", "")
-          ),
+          loader: /** @type {import('esbuild').Loader} */ (maybeLoader),
         };
       });
 
