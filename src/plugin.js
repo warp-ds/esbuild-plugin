@@ -1,5 +1,5 @@
 import path from "node:path";
-import { readFile } from "node:fs/promises";
+import fs from "node:fs/promises";
 import * as lightning from "lightningcss";
 import { createGenerator } from "@unocss/core";
 import { presetWarp } from "@warp-ds/uno";
@@ -11,7 +11,7 @@ import { classes } from "@warp-ds/css/component-classes/classes";
 import browserslist from "browserslist";
 
 const targets = lightning.browserslistToTargets(
-  browserslist("supports es6-module and > 0.25% in NO and not dead")
+  browserslist("supports es6-module and > 0.25% in NO and not dead"),
 );
 
 const uno = createGenerator({
@@ -34,7 +34,7 @@ const buildCSS = async (
   content,
   options = {
     minify: false,
-  }
+  },
 ) => {
   const { css } = await uno.generate(content);
   let output = css;
@@ -69,8 +69,11 @@ export default ({
   /** @type {import('esbuild').Plugin}*/
   return {
     name: "warp-esbuild-plugin",
+    /**
+     * @param {import('esbuild').PluginBuild} build
+     */
     setup(build) {
-      // @ts-ignore
+      build.initialOptions.metafile = true;
 
       /** @type {Tree[]} */
       let trees = [];
@@ -105,7 +108,7 @@ export default ({
       // the file in the import tree hierarchy
       build.onLoad({ filter }, async (args) => {
         const { ext } = path.parse(args.path);
-        let contents = await readFile(args.path, "utf8");
+        let contents = await fs.readFile(args.path, "utf8");
 
         if (contents.includes(placeholder)) {
           const tag = `@css-placeholder-${nanoid(6)}`;
@@ -125,8 +128,9 @@ export default ({
 
         return {
           contents,
-          // @ts-ignore
-          loader: ext.replace(".", ""),
+          loader: /** @type {import('esbuild').Loader} */ (
+            ext.replace(".", "")
+          ),
         };
       });
 
@@ -145,15 +149,27 @@ export default ({
             tag.css = await buildCSS(tag.code, { minify });
           }
 
-          result.outputFiles.forEach((file) => {
-            let source = new TextDecoder("utf-8").decode(file.contents);
+          if (result.outputFiles) {
+            result.outputFiles.forEach((file) => {
+              let source = new TextDecoder("utf-8").decode(file.contents);
 
-            tags.forEach((tag) => {
-              source = source.replaceAll(tag.tag, tag.css);
+              tags.forEach((tag) => {
+                source = source.replaceAll(tag.tag, tag.css);
+              });
+
+              file.contents = Buffer.from(source);
             });
-
-            file.contents = Buffer.from(source);
-          });
+          } else {
+            await Promise.all(
+              Object.keys(result.metafile.outputs).map(async (path) => {
+                let contents = await fs.readFile(path, "utf8");
+                for (let tag of tags) {
+                  contents = contents.replaceAll(tag.tag, tag.css);
+                }
+                await fs.writeFile(path, contents, "utf-8");
+              }),
+            );
+          }
         }
       });
 
