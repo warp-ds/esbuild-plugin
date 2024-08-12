@@ -23,11 +23,14 @@
     "nanoid": "5.0.7"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
     "@types/node": "20.11.27",
     "@warp-ds/elements-core": "0.0.1-alpha.12",
     "esbuild": "0.20.1",
     "glob": "10.4.2",
     "lit": "2.7.6",
+    "semantic-release": "24.0.0",
     "snapshot-assertion": "5.0.0",
     "tap": "18.7.1",
     "typescript": "5.4.2"
