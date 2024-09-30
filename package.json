@@ -12,6 +12,10 @@
     "types": "tsc",
     "test": "tap **/*.test.js --disable-coverage"
   },
+  "files": [
+    "src",
+    "types"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
