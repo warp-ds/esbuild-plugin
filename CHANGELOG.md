@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/warp-ds/esbuild-plugin/compare/v1.0.3...v2.0.0) (2024-10-09)
+
+
+### Bug Fixes
+
+* update dependencies ([#1](https://github.com/warp-ds/esbuild-plugin/issues/1)) ([4c97e02](https://github.com/warp-ds/esbuild-plugin/commit/4c97e02c8225e4dcfb3563d0ca3cd8fb23905a41))
+
+
+### BREAKING CHANGES
+
+* uses Warp Uno v2
+
 ## [1.0.3](https://github.com/warp-ds/esbuild-plugin/compare/v1.0.2...v1.0.3) (2024-08-12)
 
 
