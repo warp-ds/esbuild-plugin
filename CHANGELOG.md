@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/warp-ds/esbuild-plugin/compare/v2.0.0...v2.0.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* add files fiels ([d0d292f](https://github.com/warp-ds/esbuild-plugin/commit/d0d292f22a44e753b9bec473da6b5ffbc35f2fa3))
+
 # [2.0.0](https://github.com/warp-ds/esbuild-plugin/compare/v1.0.3...v2.0.0) (2024-10-09)
 
 
