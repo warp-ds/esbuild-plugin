@@ -19,12 +19,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@unocss/core": "0.63.4",
-    "@warp-ds/css": "2.0.0",
-    "@warp-ds/uno": "2.0.0",
-    "browserslist": "4.24.0",
-    "lightningcss": "1.27.0",
-    "nanoid": "5.0.7"
+    "@unocss/core": "0.64.1",
+    "@warp-ds/css": "2.0.1",
+    "@warp-ds/uno": "2.0.1",
+    "browserslist": "4.24.2",
+    "lightningcss": "1.28.2",
+    "nanoid": "5.0.9"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.3",
