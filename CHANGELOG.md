@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/warp-ds/esbuild-plugin/compare/v2.0.1...v2.0.2) (2024-12-04)
+
+
+### Bug Fixes
+
+* update dependencies ([d687e01](https://github.com/warp-ds/esbuild-plugin/commit/d687e0143fd0002e21b02742f0e68e5a6929654b))
+
 ## [2.0.1](https://github.com/warp-ds/esbuild-plugin/compare/v2.0.0...v2.0.1) (2024-10-16)
 
 
